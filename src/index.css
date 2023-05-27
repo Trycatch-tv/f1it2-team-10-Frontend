@@ -1,0 +1,41 @@
+:root {
+  --colorSection: #fff;
+  --colorText: #444655;
+  --colorPrimary: #dd4962;
+  --colorSecundary: #4a7ae5;
+  --coloBackground: #a8aabc;
+  --fontFamily: "Goudy Bookletter 1911", serif;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--colorSection);
+  font-family: var(--fontFamily);
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+ol,
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--colorText);
+}
+
+input {
+  outline: none;
+}
+
+textarea {
+  outline: none;
+}
+
+.container {
+  padding-right: 6%;
+  padding-left: 6%;
+}
