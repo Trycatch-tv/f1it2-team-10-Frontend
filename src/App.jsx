@@ -9,12 +9,16 @@ import Detail from './components/Detail';
 import Form from './components/Form';
 
 function App() {
+  const [citas, setCitas] = useGlobalState('citas');
+  const [query, setQuery] = useGlobalState('query');
+  const [results, setResults] = useGlobalState('results');
+
   return (
     <GlobalProvider
       initialState={{
-        citas: [],
-        query: '',
-        results: [],
+        citas,
+        query,
+        results,
       }}
     >
       <Router>
