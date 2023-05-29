@@ -1,3 +1,4 @@
+import React from 'react';
 import { BsFillCalendar2WeekFill } from "react-icons/bs";
 import { IoSettingsSharp } from "react-icons/io5";
 import { TiArrowSortedDown } from "react-icons/ti";
@@ -48,3 +49,5 @@ export default function Header() {
     </header>
   );
 }
+
+

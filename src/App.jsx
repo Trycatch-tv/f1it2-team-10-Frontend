@@ -1,20 +1,35 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import "./App.css";
-import Header from "./Components/Header/Header";
-import Home from "./Pages/Home";
-import New from "./Pages/New";
-import User from "./Pages/User";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { GlobalProvider, useGlobalState } from './context/GlobalState';
+import Home from './components/Home';
+import NewCita from './components/NewCita';
+import SaveCita from './components/SaveCita';
+import Header from './components/Header';
+import Detail from './components/Detail';
+import Form from './components/Form';
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/new" element={<New />} />
-        <Route path="/user:id" element={<User />} />
-      </Routes>
-    </Router>
+    <GlobalProvider
+      initialState={{
+        citas: [],
+        query: '',
+        results: [],
+      }}
+    >
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route
+            path="/new"
+            render={(props) => <NewCita {...props} />}
+          />
+          <Route path="/save" component={SaveCita} />
+          <Route path="/detail/:id" component={Detail} />
+        </Switch>
+      </Router>
+    </GlobalProvider>
   );
 }
 
