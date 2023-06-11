@@ -1,62 +1,44 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Edit from './Edit';
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { eliminarCita, actualizarCita } from '../redux/actions/actions';
 
-const Detail = () => {
-  const { id } = useParams();
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const citas = useSelector((state) => state.citas);
+const Detail = ({ cita }) => {
+  const dispatch = useDispatch();
 
-  const filteredCitas = citas.filter((cita) =>
-    cita.nombre.toLowerCase().includes(searchKeyword.toLowerCase())
-  );
-
-  const cita = filteredCitas.find((cita) => cita.id === parseInt(id));
-  
-  if (!cita) {
-    return <p>Cita no encontrada</p>;
-  }
-  
-  const [editando, setEditando] = useState(false);
-
-  const toggleEditar = () => {
-    setEditando(!editando);
+  const handleDelete = () => {
+    dispatch(eliminarCita(cita.id));
   };
 
-  const handleActualizarCita = (citaActualizada) => {
-    // Actualiza la cita en el estado global de la aplicación
-    // Puedes utilizar el ID de la cita para encontrarla y actualizarla
+  const handleToggle = () => {
+    dispatch(actualizarCita(cita.id, { ...cita, completada: !cita.completada }));
   };
 
   return (
-    <div>
-      <h2>Detalle de cita</h2>
-      {!editando ? (
-        <>
-          <p>Nombre: {cita.nombre}</p>
-          <p>Fecha: {cita.fecha}</p>
-          <p>Hora: {cita.hora}</p>
-          <p>Ubicación: {cita.ubicacion}</p>
-          <button onClick={toggleEditar}>Editar</button>
-        </>
-      ) : (
-        <Edit
-          cita={cita}
-          actualizarCita={handleActualizarCita}
-          cancelarEdicion={toggleEditar}
-        />
-      )}
-
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setSearchKeyword(e.target.searchKeyword.value);
-        }}
-      >
-        <input type="text" name="searchKeyword" placeholder="Buscar cita" />
-        <button type="submit">Buscar</button>
-      </form>
+    <div className="detail">
+      <h2>Detalles de la cita</h2>
+      <div>
+        <strong>Nombre:</strong> {cita.nombre}
+      </div>
+      <div>
+        <strong>Fecha:</strong> {cita.fecha}
+      </div>
+      <div>
+        <strong>Hora:</strong> {cita.hora}
+      </div>
+      <div>
+        <strong>Duración:</strong> {cita.duracion} minutos
+      </div>
+      <div>
+        <strong>Detalles:</strong> {cita.detalles}
+      </div>
+      <div>
+        <strong>Completada:</strong>{' '}
+        {cita.completada ? 'Sí' : 'No'}
+      </div>
+      <button onClick={handleToggle}>
+        {cita.completada ? 'Marcar como no completada' : 'Marcar como completada'}
+      </button>
+      <button onClick={handleDelete}>Eliminar cita</button>
     </div>
   );
 };

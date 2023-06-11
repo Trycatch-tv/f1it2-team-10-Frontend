@@ -1,37 +1,16 @@
-import { createAction, createReducer } from 'redux';
-
-export const addCita = createAction('ADD_CITA');
-export const updateCita = createAction('UPDATE_CITA');
-export const deleteCita = createAction('DELETE_CITA');
-export const setQuery = createAction('SET_QUERY');
-export const setResults = createAction('SET_RESULTS');
-
-const initialState = {
-  citas: [],
-  searchResults: [],
-  query: '',
-};
-
-export const AppReducer = createReducer(initialState, {
-  [addCita.type]: (state, action) => {
-    state.citas.push(action.payload);
-  },
-  [updateCita.type]: (state, action) => {
-    const updatedCitas = state.citas.map((cita) =>
-      cita.id === action.payload.id ? action.payload : cita
-    );
-    state.citas = updatedCitas;
-  },
-  [deleteCita.type]: (state, action) => {
-    const updatedCitas = state.citas.filter((cita) => cita.id !== action.payload);
-    state.citas = updatedCitas;
-  },
-  [setQuery.type]: (state, action) => {
-    state.query = action.payload;
-  },
-  [setResults.type]: (state, action) => {
-    state.searchResults = action.payload;
-  },
-});
-
-export default AppReducer;
+export const CREAR_CITA = 'CREAR_CITA';
+export const ACTUALIZAR_CITA = 'ACTUALIZAR_CITA';
+export const ELIMINAR_CITA = 'ELIMINAR_CITA';
+  
+  export const crearCita = (cita) => {
+    return { type: CREAR_CITA, payload: cita };
+  };
+  
+  export const actualizarCita = (id, cita) => {
+    return { type: ACTUALIZAR_CITA, payload: { id, cita } };
+  };
+  
+  export const eliminarCita = (id) => {
+    return { type: ELIMINAR_CITA, payload: id };
+  };
+  
