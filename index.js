@@ -1,20 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter as Router } from 'react-router-dom';
-import store from './redux/store';
-import App from './App';
+const http = require('http');
+const express = require('express');
+const cors = require('cors');
+const server = express();
+const PORT = 3001;
 
-const rootElement = document.getElementById('root');
+const { Router } = require('express');
+const router = Router();
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
-  </React.StrictMode>,
-  rootElement
-);
+const { getAppointmentById } = require('./controllers/getAppointmentById');
+const { login } = require('./controllers/login');
+const { postCreate } = require('./controllers/postCreate');
+const { deleteApp } = require('./controllers/deleteApp');
 
+router.get('/appointment/:id', getAppointmentById);
+router.get('/login', login);
+router.post('/create', postCreate);
+router.delete('/deleteApp/:id', deleteApp);
+
+server.use(cors());
+
+server.use(express.json());
+
+server.use('/', router);
+
+server.listen(PORT, () => {
+  console.log('Server raised in port: ' + PORT);
+});
