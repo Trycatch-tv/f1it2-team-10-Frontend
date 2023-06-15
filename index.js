@@ -1,6 +1,6 @@
 const http = require('http');
 const express = require('express');
-const cors = require('cors');
+// const cors = require('cors');
 const server = express();
 const PORT = 3001;
 
@@ -17,7 +17,7 @@ router.get('/login', login);
 router.post('/create', postCreate);
 router.delete('/deleteApp/:id', deleteApp);
 
-server.use(cors());
+// server.use(cors());
 
 server.use(express.json());
 
