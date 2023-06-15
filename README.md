@@ -59,6 +59,7 @@ Para el frontend, deberás crear formularios y acciones que interactúen con est
   <input type="password" id="password" name="password" required>
   <button type="submit">Registrarse</button>
 </form>
+
 document.getElementById("register-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.getElementById("email").value;
@@ -84,6 +85,7 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
     console.error("Error en la petición:", err);
   }
 });
+
 
 ![login](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/904e6572-d14c-4ec8-a0f0-699935ec3570)
 
