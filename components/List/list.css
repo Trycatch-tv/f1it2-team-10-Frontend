@@ -6,6 +6,8 @@
   border: 5px solid #cccccce0;
   border-radius: 5px;
   box-shadow: 10rem;
+  background-color: white;
+  opacity: 0.9;
 }
 
 .label {
