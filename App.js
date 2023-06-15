@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom';
 import Detail from './components/Detail/detail';
 import About from './pages/About/about';
 import Menu from './components/Menu/menu';
