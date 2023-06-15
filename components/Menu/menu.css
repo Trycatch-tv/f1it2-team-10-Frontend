@@ -2,18 +2,6 @@
   background-image: url('../../assets/CitaSync.png');
 } */
 
-.nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80px;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  background: linear-gradient(180deg, #a2acd6cb 0%, #b5b9e4 100%);
-}
-
 .hamburger {
   cursor: pointer;
   border: 0;
@@ -21,9 +9,7 @@
   width: 40px;
   padding: 0.7rem;
   border-radius: 50%;
-  box-shadow: 5px;
   background-color: #a3eea0;
-  cursor: pointer;
   box-shadow: 0px 2px 2px #ccc;
   position: absolute;
   top: 50%;
@@ -37,23 +23,6 @@
 .hamburger:hover {
   background-color: #186ecada;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.navigation__items {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  position: absolute;
-  top: 80px;
-  right: 0;
-  width: 200px;
-  box-shadow: 0px 2px 2px #ccc;
-  transition: all 0.2s ease-in-out;
-  z-index: 1;
-  
 }
 
 .nav {
