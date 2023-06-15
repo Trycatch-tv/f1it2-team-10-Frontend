@@ -1,0 +1,119 @@
+/* .background {
+  background-image: url('../../assets/CitaSync.png');
+} */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, #a2acd6cb 0%, #b5b9e4 100%);
+}
+
+.hamburger {
+  cursor: pointer;
+  border: 0;
+  height: 50px;
+  width: 45px;
+  padding: 0.7rem;
+  border-radius: 50%;
+  box-shadow: 5px;
+  background-color: #a3eea0;
+  cursor: pointer;
+  box-shadow: 0px 2px 2px #ccc;
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  display: none;
+  transition: all 0.2s ease-in-out;
+  color: #fff;
+}
+
+.hamburger:hover {
+  background-color: #cdd7e2da;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.navigation__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  box-shadow: 0px 2px 2px #ccc;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, #6987db 0%, #878deb 100%);
+  box-shadow: 0px 2px 2px #ccc;
+}
+
+.navigation__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 5px;
+  padding: 25px;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  box-shadow: 0px 2px 2px #ccc;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  background-color: #fff;
+  transform: translateX(100%);
+}
+
+.navigation__items:not(.hidden) {
+  display: flex;
+  transform: translateX(0%);
+}
+
+.navigation__items button:hover {
+  background-color: #cdd7e2da;
+  color: #fff;
+  border-color: rgb(176, 176, 211);
+  box-shadow: 0 5px 5px 0 rgba(170, 178, 223, 0.897), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.navigation__items button {
+  margin: 1px;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 5px;
+  background-color: hsl(239, 56%, 70%);
+  box-shadow: 0 8px 16px 0 rgba(110, 165, 228, 0.918), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+.navigation__items.visible {
+  transform: translateX(0%);
+}
