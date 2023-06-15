@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { createAppointment, editAppointment, deleteAppointment } from '../../redux/reducer/reducers';
 import CreateForm from '../CreateForm/createForm';
 
-function Edit() {
+export default function Edit() {
   const appointments = useSelector((state) => state.appointments);
   const dispatch = useDispatch();
 
-  const handleEditAppointment = (appointment) => {
+  const handleEditAppointment = useCallback((appointment) => {
     dispatch(editAppointment(appointment));
-  };
-
-  const handleDeleteAppointment = (id) => {
+  }, [dispatch]);
+  
+  const handleDeleteAppointment = useCallback((id) => {
     dispatch(deleteAppointment(id));
-  };
+  }, [dispatch]);
 
   const [appointmentSelectId, setAppointmentSelectId] = useState(null);
 
@@ -31,7 +31,7 @@ function Edit() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createAppointment(appointment));
-    navigate('/createForm');
+    navigate('/detail');
   };
 
   return (
@@ -95,8 +95,8 @@ function Edit() {
     
       <h1>Editar cita</h1>
       <ul className="citas-list">
-        {appointments.map((appointment, index) => (
-          <li key={index} className="cita">
+        {appointments.map((appointment, id) => (
+          <li key={id} className="cita">
             <h3>{appointment.nombre}</h3>
             <p>{appointment.fecha}</p>
             <button className="seleccionar" onClick={() => setAppointmentSelectId(appointment.id)}>
@@ -109,4 +109,3 @@ function Edit() {
   );
 }
 
-export default Edit;
