@@ -83,11 +83,9 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
       // Error en el registro
       const error = await response.json();
       console.error("Error en el registro:", error.message);
-    }
-  } catch (err) {
+    }} catch (err) {
     console.error("Error en la petición:", err);
-  }
-});´
+  }});´
 
 ![login](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/904e6572-d14c-4ec8-a0f0-699935ec3570)
 
