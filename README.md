@@ -7,6 +7,7 @@ Listado y búsqueda de citas.
 Visualización de detalles de citas. Eliminación de citas.
 Eliminación de citas
 Integración con calendarios externos (opcional). (Se decidió por recomendación del sr George, que este requerimiento no se va a tomar en consideración en esta etapa pòr falta de tiempo).
+                                
                                 ## CitaSync
                             # Team: TECHNOMANCERS 
                               (Los Tecnomantes)
@@ -34,7 +35,7 @@ Axios: para realizar solicitudes HTTP al backend.
 💡 Documentación y Arquitectura del Proyecto
 Para el frontend, utilizar Create React App para configurar la estructura del proyecto y las dependencias requeridas. Ejecutar el siguiente comando en el directorio del repositorio frontend clonado:
 
-´npx create-react-app´
+`npx create-react-app`
 
 Configuración
 Instalar Node.js y npm para poder utilizar JavaScript y React en el frontend.
@@ -42,9 +43,9 @@ Configurar el proyecto para utilizar React y asegurarse de que esté conectado c
 Al completar las tareas de configuración y desarrollo, realizar un commit inicial en cada repositorio con los cambios realizados:
 
 cd citasync
-´git add .
+`git add .
 git commit -m "Commit inicial del proyecto frontend"
-git push origin main´
+git push origin main`
 
 Diseño:
 Describe el diseño de la interfaz de usuario, incluyendo las pantallas principales y cómo se navega entre ellas. También, incluir mockups o bocetos para ilustrar el diseño de la aplicación.
@@ -89,8 +90,8 @@ Para el frontend, deberás crear formularios y acciones que interactúen con est
 ![login](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/904e6572-d14c-4ec8-a0f0-699935ec3570)
 
 De manera similar, se implementa el inicio de sesión y la gestión de citas en el frontend utilizando los endpoints y parámetros proporcionados en la documentación.
-Configurar el proyecto React y sus dependencias. Asegurandonos de tener una estructura de directorios adecuada y archivos de configuración como webpack.config.js y babel.config.js .
-Crear componentes React para cada una de las funcionalidades requeridas: creación y edición de citas, listado y búsqueda de citas, visualización de detalles de citas y eliminación de citas. Utiliza useState y useEffect para manejar el estado y las interacciones con el backend mediante fetch o alguna librería como Axios.
+Configurar el proyecto React y sus dependencias. Asegurandonos de tener una estructura de directorios adecuada y archivos de configuración como `webpack.config.js` y `babel.config.js` .
+Crear componentes React para cada una de las funcionalidades requeridas: creación y edición de citas, listado y búsqueda de citas, visualización de detalles de citas y eliminación de citas. Utiliza `useState` y `useEffect` para manejar el estado y las interacciones con el backend mediante fetch o alguna librería como Axios.
 
 ![menu](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/98af5376-d713-444e-8748-ace80e7397fd)
 
@@ -113,7 +114,7 @@ Una aplicación de agenda de citas desarrollada con React, Redux y React Router.
 
 **Crear un proyecto de React**: Usa `create-react-app` para crear un nuevo proyecto de React. Ejecuta el siguiente comando en tu terminal o línea de comandos:
 
-npx create-react-app mi-agenda-citas
+`npx create-react-app citasync`
 
 Esto creará un nuevo proyecto de React llamado "mi-agenda-citas". Puedes cambiar el nombre según tus preferencias.
 
