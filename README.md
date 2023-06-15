@@ -1,16 +1,16 @@
 # f1it2-team-10-Frontend
 
 PROYECTO:
-                          💡 Agenda de citas: 
+💡 Agenda de citas: 
 Creación y edición de citas (nombre, fecha, hora, duración, ubicación, detalles, etc.). 
 Listado y búsqueda de citas. 
 Visualización de detalles de citas. Eliminación de citas.
 Eliminación de citas
 Integración con calendarios externos (opcional). (Se decidió por recomendación del sr George, que este requerimiento no se va a tomar en consideración en esta etapa pòr falta de tiempo).
                                 
-                                ## CitaSync
-                            # Team: TECHNOMANCERS 
-                              (Los Tecnomantes)
+## CitaSync
+# Team: TECHNOMANCERS 
+# (Los Tecnomantes)
 
 También conocidos como Tecnólogos, Tecnologenios o Ingeniadores, es uno de los grupos nómadas que habitan Norteamérica durante los acontecimientos de Cyberpunk 2020.
 Cyberpunk 2020 es la segunda edición del título Cyberpunk, publicado en 1988, un juego de rol ambientado en un universo de ficción del subgénero de ciencia ficción orientado a la acción y el combate.
@@ -55,37 +55,6 @@ Crear mockups o bocetos para ilustrar el diseño visual de cada pantalla y cómo
 Incluir detalles sobre el uso del color, la tipografía y otros elementos visuales para guiar el desarrollo de la interfaz de usuario.
 
 Para el frontend, deberás crear formularios y acciones que interactúen con estos endpoints. Para el registro se crea un formulario que solicite la dirección de correo electrónico y la contraseña. Al enviar el formulario, realiza una petición POST al endpoint /api/users/register con los parámetros email y password. Si la respuesta es exitosa (201 Created), el usuario se registra correctamente. En caso contrario, muestra un mensaje de error adecuado.
-
-`<form id="register-form">
-  <label for="email">Correo electrónico:</label>
-  <input type="email" id="email" name="email" required>
-  <label for="password">Contraseña:</label>
-  <input type="password" id="password" name="password" required>
-  <button type="submit">Registrarse</button>
-</form>`
-
-`document.getElementById("register-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  try {
-    const response = await fetch("/api/users/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });`
-
-   `if (response.status === 201) {
-      // Registro exitoso
-      const data = await response.json();
-      console.log("Usuario registrado con ID:", data.user_id);
-    } else {
-      // Error en el registro
-      const error = await response.json();
-      console.error("Error en el registro:", error.message);
-    }} catch (err) {
-    console.error("Error en la petición:", err); }});`
 
 ![login](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/904e6572-d14c-4ec8-a0f0-699935ec3570)
 
