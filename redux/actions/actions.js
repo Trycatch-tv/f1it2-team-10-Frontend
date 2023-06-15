@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_APPOINTMENT, CREATE_APPOINTMENT, EDIT_APPOINTMENT, DELETE_APPOINTMENT } from "./actions-types";
+import { GET_APPOINTMENT, CREATE_APPOINTMENT, EDIT_APPOINTMENT, DELETE_APPOINTMENT } from "./action-types";
 
 export const createAppointment = (appointment) => {
   return { type: CREATE_APPOINTMENT, payload: appointment };
