@@ -55,15 +55,15 @@ Incluir detalles sobre el uso del color, la tipografía y otros elementos visual
 
 Para el frontend, deberás crear formularios y acciones que interactúen con estos endpoints. Para el registro se crea un formulario que solicite la dirección de correo electrónico y la contraseña. Al enviar el formulario, realiza una petición POST al endpoint /api/users/register con los parámetros email y password. Si la respuesta es exitosa (201 Created), el usuario se registra correctamente. En caso contrario, muestra un mensaje de error adecuado.
 
-´<form id="register-form">
+`<form id="register-form">
   <label for="email">Correo electrónico:</label>
   <input type="email" id="email" name="email" required>
   <label for="password">Contraseña:</label>
   <input type="password" id="password" name="password" required>
   <button type="submit">Registrarse</button>
-</form>
+</form>`
 
-document.getElementById("register-form").addEventListener("submit", async (e) => {
+`document.getElementById("register-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -73,9 +73,9 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
-    });
+    });`
 
-    if (response.status === 201) {
+   `if (response.status === 201) {
       // Registro exitoso
       const data = await response.json();
       console.log("Usuario registrado con ID:", data.user_id);
@@ -84,8 +84,7 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
       const error = await response.json();
       console.error("Error en el registro:", error.message);
     }} catch (err) {
-    console.error("Error en la petición:", err);
-  }});´
+    console.error("Error en la petición:", err); }});`
 
 ![login](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/904e6572-d14c-4ec8-a0f0-699935ec3570)
 
@@ -144,9 +143,7 @@ cd citasync
 
 Para ejecutar la aplicación en modo de desarrollo, utiliza el siguiente comando:
 
-inicio de npm
-
-Esto abrirá la aplicación en `http://localhost:3000`.
+inicio de npm. Esto abrirá la aplicación en `http://localhost:3000`.
 
 **Configurar Redux**: Crea un directorio llamado "redux" en la carpeta "src" y crea archivos para almacenar acciones, reductores y la configuración de la tienda. Por ejemplo, crea archivos como `store.js`, `reducers.js` y `actions.js` dentro del directorio "redux".
 
@@ -169,11 +166,11 @@ Esto abrirá la aplicación en `http://localhost:3000`.
 
 - `src`: Contiene todos los archivos de código fuente, incluidos los componentes de React, la configuración de Redux y las hojas de estilo.
     - `components`: Contiene los componentes de React utilizados en la aplicación.
-        - assets
-        - components:
-            - Detail, List, Menu y Login
-        - pages:
-            - About, CreateForm y Edit
+        - `assets`
+        - `components`:
+            - `Detail`, `List`, `Menu` y `Login`
+        - `pages`:
+            - `About`, `CreateForm` y `Edit`
     - `redux`: Contiene la configuración de Redux, incluidos los archivos de acciones y reductores.
     - `App.js`: El componente principal de la aplicación.
     - `App.css`: archivo de hoja de estilo en cascada
@@ -188,9 +185,7 @@ Esto abrirá la aplicación en `http://localhost:3000`.
 
 Para compilar la aplicación para producción, se ejecuta el siguiente comando:
 
-compilación de ejecución de npm
-
-Esto generará una carpeta `build` con los archivos estáticos optimizados para el despliegue.
+compilación de ejecución de npm. Esto generará una carpeta `build` con los archivos estáticos optimizados para el despliegue.
 
 ## Contribuir
 
