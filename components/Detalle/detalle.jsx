@@ -20,7 +20,7 @@ const Detalle = ({ cita }) => {
       dispatch(
         actualizarCita(cita.id, {
           ...cita,
-          agendada: !cita.agendada,
+          agendada: !cita.reagendada,
         })
       );
     }
@@ -85,7 +85,7 @@ const Detalle = ({ cita }) => {
          <div className="button-detalle">
             <button onClick={handleToggle} type="submit" disabled={!cita}>
               {displayCita.estado
-                ? 'Marcar como no agendada'
+                ? 'Marcar como reagendada'
                 : 'Marcar como agendada'}
             </button>
           </div>
