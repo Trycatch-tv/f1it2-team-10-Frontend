@@ -56,22 +56,27 @@ Incluir detalles sobre el uso del color, la tipografía y otros elementos visual
 
 Para el frontend, deberás crear formularios y acciones que interactúen con estos endpoints. Para el registro se crea un formulario que solicite la dirección de correo electrónico y la contraseña. Al enviar el formulario, realiza una petición POST al endpoint /api/users/register con los parámetros email y password. Si la respuesta es exitosa (201 Created), el usuario se registra correctamente. En caso contrario, muestra un mensaje de error adecuado.
 
-![login](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/904e6572-d14c-4ec8-a0f0-699935ec3570)
+![PANTALLA INICIO](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/c55fd216-7181-4ccf-a76b-f0a4ad5c42c1)
 
 De manera similar, se implementa el inicio de sesión y la gestión de citas en el frontend utilizando los endpoints y parámetros proporcionados en la documentación.
 Configurar el proyecto React y sus dependencias. Asegurandonos de tener una estructura de directorios adecuada y archivos de configuración como `webpack.config.js` y `babel.config.js` .
 Crear componentes React para cada una de las funcionalidades requeridas: creación y edición de citas, listado y búsqueda de citas, visualización de detalles de citas y eliminación de citas. Utiliza `useState` y `useEffect` para manejar el estado y las interacciones con el backend mediante fetch o alguna librería como Axios.
 
-![menu](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/98af5376-d713-444e-8748-ace80e7397fd)
+![MENU](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/ab4ef5fa-6241-4f69-b8c3-d6068b5f8e5d)
 
 Configurar el enrutamiento de la aplicación utilizando React Router. Esto incluye la creación de un componente de navegación y la configuración de las rutas para cada uno de los componentes de la aplicación.
 Estilizar la aplicación utilizando CSS o algún framework de diseño como Bootstrap o Material-UI. Puedes crear archivos CSS específicos para cada componente y utilizarlos para dar estilo a los elementos de la interfaz de usuario.
 Implementar la lógica para la comunicación con el backend. Esto incluye realizar solicitudes HTTP a las rutas del backend para llevar a cabo las operaciones CRUD. Puedes utilizar fetch o alguna librería como Axios para facilitar esta tarea.
 Manejar los errores y las validaciones en la interfaz de usuario. Esto incluye mostrar mensajes de error y éxito al usuario después de realizar cada operación, así como validar los datos ingresados por el usuario antes de enviarlos al backend.
 
-![crear cita](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/4a7f637c-9462-4448-ba73-0d5ba731db6e)
+![CREAR CITA](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/cb54498a-3035-4706-bade-118e52aefe36)
 
 Una aplicación de agenda de citas desarrollada con React, Redux y React Router. Esta aplicación permite a los usuarios crear, editar y eliminar citas, así como navegar por los detalles de cada cita.
+
+![DETALLES CITA](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/2c090666-6c78-4e91-925b-19dc072b91c4)
+
+![LISTA DE CITAS](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/b7132bcc-7b5e-4f74-a049-583ea49bee34)
+
 
 ## Requisitos
 
@@ -164,3 +169,7 @@ Si deseas contribuir al proyecto, crea una bifurcación (fork) del repositorio, 
 ## Licencia
 
 Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo `LICENSE` para obtener más información.
+
+![ABOUT](https://github.com/Trycatch-tv/f1it2-team-10-Frontend/assets/122529721/2554bb7b-9d2e-4ccf-bdbb-7409025c8f7e)
+
+
