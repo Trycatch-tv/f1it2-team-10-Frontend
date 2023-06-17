@@ -1,0 +1,75 @@
+.crearCita {
+  width: 450px;
+  margin: 10px auto;
+  padding: -5rem;
+  border-radius: 10px;
+  box-shadow: 10rem;
+  gap: 1em;
+  height: 90vh;
+  max-height: 100vh;
+  min-height: -100em;
+  background-color: white;
+  opacity: 0.9;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.label {
+  display: block;
+  margin-bottom: -10px;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.input,
+textarea {
+  width: 90%;
+  padding: 2px;
+  margin-bottom: 0.5px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 5px solid hsl(0, 0%, 80%);
+  border-radius: 5px;
+  padding: 4px;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  width: 100px;
+  box-shadow: 0px 2px 2px #ccc;
+  transition: all 0.2s ease-in-out;
+  z-index: 1;
+  background-color: #fff;
+  transform: translateX(100%);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.button:not(.hidden) {
+  display: flex;
+  transform: translateX(0%);
+}
+
+.button:hover {
+  background-color: #cdd7e2da;
+  color: #fff;
+  border-color: rgb(176, 176, 211);
+  box-shadow: 0 5px 5px 0 rgba(170, 178, 223, 0.897), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.button-clicked {
+  margin: 4px;
+  width: 40%;
+  border-radius: 0.5rem;
+  padding: 4px;
+  background-color: hsl(239, 56%, 70%);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  box-shadow: 0 8px 16px 0 rgba(110, 165, 228, 0.918), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
