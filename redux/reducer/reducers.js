@@ -1,56 +1,69 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-  appointments: []
+  citas: [],
+  listarCitas: [],
 };
+
+export const crearCita = createAsyncThunk(
+  "citas/crearCita",
+  async (cita) => {
+    const response = await axios.post("http://localhost:3001", cita);
+    return response.data;
+  }
+);
+
+export const actualizarCita = createAsyncThunk(
+  "citas/actualizarCita",
+  async ({ id, actualizarCita }) => {
+    const response = await axios.put(`http://localhost:3001/${id}`, actualizarCita);
+    return response.data;
+  }
+);
+
+export const eliminarCita = createAsyncThunk(
+  "citas/eliminarCita",
+  async (id) => {
+    await axios.delete(`http://localhost:3001/${id}`);
+    return id;
+  }
+);
+
+export const listarCitas = createAsyncThunk(
+  "citas/listarCitas",
+  async () => {
+    const response = await axios.get("http://localhost:3001/citas");
+    return response.data;
+  }
+);
 
 const citasSlice = createSlice({
   name: "citas",
   initialState,
-  reducers: {
-    CREATE_APPOINTMENT: (state, action) => {
-      state.appointments.push(action.payload);
-    },
-    EDIT_APPOINTMENT: (state, action) => {
-      const index = state.appointments.findIndex(appointment => appointment.id === action.payload.id);
-      if (index !== -1) {
-        state.appointments[index] = action.payload;
-      }
-    },
-    DELETE_APPOINTMENT: (state, action) => {
-      state.appointments = state.appointments.filter(appointment => appointment.id !== action.payload);
-    }
-  }
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(crearCita.fulfilled, (state, action) => {
+        state.citas.push(action.payload);
+      })
+      .addCase(actualizarCita.fulfilled, (state, action) => {
+        const index = state.citas.findIndex((cita) => cita.id === action.payload.id);
+        if (index !== -1) {
+          state.citas[index] = action.payload;
+        }
+      })
+      .addCase(eliminarCita.fulfilled, (state, action) => {
+        const index = state.citas.findIndex((cita) => cita.id === action.payload);
+        if (index !== -1) {
+          state.citas.splice(index, 1);
+        }
+      })
+      .addCase(listarCitas.fulfilled, (state, action) => {
+        state.listarCitas = action.payload;
+      });
+  },
 });
 
-export const { CREATE_APPOINTMENT, EDIT_APPOINTMENT, DELETE_APPOINTMENT } = citasSlice.actions;
-
-export const createAppointment = (appointment) => {
-  const endpoint = 'http://localhost:3001/';
-  return (dispatch) => {
-    axios.post(endpoint, appointment).then(({ data }) => {
-      return dispatch(CREATE_APPOINTMENT(data));
-    });
-  };
-};
-
-export const editAppointment = (id, updatedAppointment) => {
-  const endpoint = `http://localhost:3001/${id}`;
-  return (dispatch) => {
-    axios.put(endpoint, updatedAppointment).then(({ data }) => {
-      return dispatch(EDIT_APPOINTMENT(data));
-    });
-  };
-};
-
-export const deleteAppointment = (id) => {
-  const endpoint = `http://localhost:3001/${id}`;
-  return (dispatch) => {
-    axios.delete(endpoint).then(({ data }) => {
-      return dispatch(DELETE_APPOINTMENT(data));
-    });
-  };
-};
-
+export const { actions } = citasSlice;
 export default citasSlice.reducer;
