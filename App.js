@@ -1,45 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import Detail from './components/Detail/detail';
+import { Provider, useSelector } from 'react-redux';
+import { createStore } from 'redux';
+import store from './redux/store';
+import rootReducer from './redux/reducer/reducers';
+import Detalle from './components/Detalle/detalle';
 import About from './pages/About/about';
 import Menu from './components/Menu/menu';
-import CreateForm from './pages/CreateForm/createForm';
-import List from './components/List/list';
-import Login from './components/Login';
+import CrearCita from './pages/CrearCita/crearCita';
+import ListarCitas from './components/ListarCitas/listarCitas';
+import Home from './components/Home';
+
 
 function App() {
 
   const navigate = useNavigate();
-   const [access, setAccess] = useState(true);
-
-   function login(userData) {
-      const { username, password } = userData;
-      const URL = 'http://localhost:3001/api/';
-      axios.post(URL, { username, password }).then(({ data }) => {
-         const { access } = data;
-         setAccess(access);
-         access && navigate('/menu');
-      });
-   }
-
-   useEffect(() => {
-      !access && navigate('/');
-   }, [access]);
+  const [access, setAccess] = useState(true);
 
 
   return (
-    <div className="app">
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/createForm" element={<CreateForm />} />
-        <Route path="/detail" element={<Detail />} />
-        <Route path="/list" element={<List />} />
-        <Route path="/about" element={<About />} />
-      </Routes>
-    </div>
+    <Provider store={store}>
+      <div className="app">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/crearCita" element={<CrearCita />} />
+          <Route path="/detalle" element={<Detalle />} />
+          <Route path="/listarCitas" element={<ListarCitas />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </Provider>
   );
 }
 
