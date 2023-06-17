@@ -20,7 +20,7 @@ const Detalle = ({ cita }) => {
       dispatch(
         actualizarCita(cita.id, {
           ...cita,
-          completada: !cita.completada,
+          agendada: !cita.agendada,
         })
       );
     }
@@ -45,7 +45,7 @@ const Detalle = ({ cita }) => {
     duracion: '',
     ubicacion: '',
     detalles: '',
-    completada: false,
+    estado: false,
   };
 
   const displayCita = cita || defaultCita;
@@ -73,7 +73,7 @@ const Detalle = ({ cita }) => {
           <strong>Detalles:</strong> {displayCita.detalles}
         </div>
         <div>
-          <strong>Completada:</strong> {displayCita.completada ? 'Sí' : 'No'}
+          <strong>Estado:</strong> {displayCita.estado ? 'Sí' : 'No'}
         </div>
       </div>
       {!cita ? (
@@ -84,9 +84,9 @@ const Detalle = ({ cita }) => {
       ) : (
          <div className="button-detalle">
             <button onClick={handleToggle} type="submit" disabled={!cita}>
-              {displayCita.completada
-                ? 'Marcar como no completada'
-                : 'Marcar como completada'}
+              {displayCita.estado
+                ? 'Marcar como no agendada'
+                : 'Marcar como agendada'}
             </button>
           </div>
            )}
