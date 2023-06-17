@@ -63,8 +63,12 @@ const CrearCita = () => {
   return (
     <div className="crearCita">
       <form onSubmit={handleSubmit} className="form">
-        <h1>CitaSync</h1>
-        <h2>Añadir cita</h2>
+        <div className='name'>
+          <h1>CitaSync</h1>
+          </div>
+          <div className="encabezado">
+          <h2>Añadir cita</h2>
+        </div>
         <div className="input-container">
           <label htmlFor="nombre">Nombre:</label>
           <input
