@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { crearCita, actualizarCita, recuperarCita, eliminarCita } from '../../redux/actions/actions';
 import CrearCita from '../CrearCita/crearCita';
+import axios from 'axios';
 import './actualizarCita.css';
 
 export default function Actualizar() {
@@ -12,19 +13,23 @@ export default function Actualizar() {
 
   const handleActualizarCita = useCallback((cita) => {
     dispatch(actualizarCita(cita));
-  }, [dispatch]);
+    navigate('/crearCita');
+  }, [dispatch, navigate]);
 
   const handleGuardarCita = useCallback((cita) => {
     dispatch(crearCita(cita));
-  }, [dispatch]); 
+    navigate('/detalle');
+  }, [dispatch, navigate]);
 
   const handleRecuperarCita = useCallback((id) => {
     dispatch(recuperarCita(id));
-  }, [dispatch]);
+    navigate('/buscarCitas');
+  }, [dispatch, navigate]);
 
   const handleEliminarCita = useCallback((id) => {
     dispatch(eliminarCita(id));
-  }, [dispatch]);
+    navigate('/exit');
+  }, [dispatch, navigate]);
 
   const [citaSelectId, setCitaSelectId] = useState(null);
   const citaSelect = useSelector((state) => state.citas.find((cita) => cita.id === citaSelectId));
@@ -42,18 +47,28 @@ export default function Actualizar() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setCita({ ...cita, [name]: value });
+    setCita((prevCita) => ({
+      ...prevCita,
+      [name]: value
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(crearCita(cita));
+    axios.post('https://citasync.onrender.com/citas', cita)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  
     navigate('/detalle');
   };
 
   return (
     <div className="citaForm">
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit}>
         <h2 className="encabezado">Actualizar cita</h2>
         <div className="input-container">
           <label htmlFor="id" className="label">
@@ -150,32 +165,43 @@ export default function Actualizar() {
             />
           </label>
         </div>
-
-        <button type="submit" className="button-clicked">
+  
+        <button type="submit" className="button-clicked" onClick={() => handleActualizarCita(cita.id)}>
           Guardar cita
         </button>
-
+  
         <button className="button-clicked" onClick={() => setCitaSelectId(cita.id)}>
-          Seleccionar Cita
+          Seleccionar cita
         </button>
-        <ul className="submit">
-        {citas.map((cita, id) => (
+        
+        <ul>
+          {citas.map((cita, id) => (
             <li key={id}>
               <span>{cita.nombre}</span>
-              <button onClick={() => handleRecuperarCita(cita.id)}>Recuperar</button>
-              <button onClick={() => handleEliminarCita(cita.id)}>Eliminar</button>
+              <button type="button" className="button-primary" onClick={() => handleRecuperarCita(cita.id)}>
+                Recuperar
+              </button>
+              <button type="button" className="button-primary" onClick={() => handleEliminarCita(cita.id)}>
+                Eliminar
+              </button>
             </li>
           ))}
         </ul>
+        
+        {citaSelect && (
+          <div className="citaDetalle">
+            <h2>Detalle de la cita</h2>
+            <p>Id: {citaSelect.id}</p>
+            <p>Nombre: {citaSelect.nombre}</p>
+            <p>Fecha: {citaSelect.fecha}</p>
+            <p>Hora: {citaSelect.hora}</p>
+            <p>Ubicación: {citaSelect.ubicacion}</p>
+            <p>Duración: {citaSelect.duracion}</p>
+            <p>Detalles: {citaSelect.detalles}</p>
+            <p>Estado: {citaSelect.estado}</p>
+          </div>
+        )}
       </form>
-
-      {citaSelect && (
-        <CrearCita
-          cita={citaSelect}
-          handleGuardarCita={handleGuardarCita}
-          handleActualizarCita={handleActualizarCita}
-        />
-      )}
     </div>
-  );
-}
+  )
+};  
