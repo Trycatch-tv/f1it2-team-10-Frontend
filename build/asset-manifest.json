@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.76e1f246.css",
+    "main.js": "/static/js/main.8d2d6d43.js",
+    "static/media/orli.png": "/static/media/orli.c9835964cb9885f9de51.png",
+    "static/media/agendar-citas.jpg": "/static/media/agendar-citas.500396e13befc1d19965.jpg",
+    "static/media/yeferson.png": "/static/media/yeferson.6c63baac7e447cb5c039.png",
+    "static/media/giovanni.png": "/static/media/giovanni.04da899b7e5a02816c0a.png",
+    "index.html": "/index.html",
+    "main.76e1f246.css.map": "/static/css/main.76e1f246.css.map",
+    "main.8d2d6d43.js.map": "/static/js/main.8d2d6d43.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.76e1f246.css",
+    "static/js/main.8d2d6d43.js"
+  ]
+}
