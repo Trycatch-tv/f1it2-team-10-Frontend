@@ -143,9 +143,9 @@ inicio de npm. Esto abrirá la aplicación en `http://localhost:3000`.
     - `components`: Contiene los componentes de React utilizados en la aplicación.
         - `assets`
         - `components`:
-            - `Detail`, `List`, `Menu` y `Login`
+            - `BuscarCitas`, `Detalle`, `Menu` y `Home`
         - `pages`:
-            - `About`, `CreateForm` y `Edit`
+            - `About`, `CrearCita` y `ActualizarCita`
     - `redux`: Contiene la configuración de Redux, incluidos los archivos de acciones y reductores.
     - `App.js`: El componente principal de la aplicación.
     - `App.css`: archivo de hoja de estilo en cascada
