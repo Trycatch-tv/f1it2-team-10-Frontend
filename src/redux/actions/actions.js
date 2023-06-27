@@ -16,7 +16,7 @@ export const eliminarCita = (id) => {
 export const buscarCitas = (terminoBusqueda) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`https://citasync.onrender.com/citas?q=${terminoBusqueda}`);
+      const response = await axios.get(`/citas?q=${terminoBusqueda}`);
       dispatch({ type: BUSCAR_CITAS, payload: response.data });
     } catch (error) {
       console.log(error);
@@ -27,7 +27,7 @@ export const buscarCitas = (terminoBusqueda) => {
 export const recuperarCita = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get("https://citasync.onrender.com/citas");
+      const response = await axios.get("/citas");
       dispatch({ type: RECUPERAR_CITA, payload: response.data });
     } catch (error) {
       console.log(error);

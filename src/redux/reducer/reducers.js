@@ -4,7 +4,7 @@ import axios from 'axios';
 export const crearCita = createAsyncThunk(
   'citas/crearCita',
   async (cita) => {
-    const response = await axios.post('https://citasync.onrender.com/citas', cita);
+    const response = await axios.post('/citas', cita);
     return response.data;
   }
 );
@@ -13,7 +13,7 @@ export const actualizarCita = createAsyncThunk(
   'citas/actualizarCita',
   async ({ id, actualizarCita }) => {
     const response = await axios.put(
-      `https://citasync.onrender.com/citas/${id}`,
+      `/citas/${id}`,
       actualizarCita
     );
     return response.data;
@@ -23,7 +23,7 @@ export const actualizarCita = createAsyncThunk(
 export const eliminarCita = createAsyncThunk(
   'citas/eliminarCita',
   async (id) => {
-    await axios.delete(`https://citasync.onrender.com/citas/${id}`);
+    await axios.delete(`/citas/${id}`);
     return id;
   }
 );
@@ -32,7 +32,7 @@ export const buscarCitas = createAsyncThunk(
   'citas/buscarCita',
   async (terminoBusqueda) => {
     const response = await axios.get(
-      `https://citasync.onrender.com/citas?q=${terminoBusqueda}`
+      `/citas?q=${terminoBusqueda}`
     );
     return response.data;
   }
@@ -41,7 +41,7 @@ export const buscarCitas = createAsyncThunk(
 export const recuperarCita = createAsyncThunk(
   'citas/recuperarCita',
   async () => {
-    const response = await axios.get('https://citasync.onrender.com/citas');
+    const response = await axios.get('/citas');
     return response.data;
   }
 );

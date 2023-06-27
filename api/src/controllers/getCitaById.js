@@ -3,7 +3,7 @@ const axios = require('axios');
 const getCitaById = async (req, res) => {
   try {
     const { id } = req.params;
-    const { data } = await axios.get(`${URL}/${id}`);
+    const { data } = await axios.get(`/citas/${id}`);
 
     if (!data.cita) throw Error(`Faltan datos del ID: ${id}`);
 
