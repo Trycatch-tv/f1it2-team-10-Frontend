@@ -76,7 +76,7 @@ export default function Actualizar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://citasync.onrender.com/citas', cita)
+    axios.post('/citas', cita)
       .then((response) => {
         console.log(response.data);
         navigate('/detalle');
