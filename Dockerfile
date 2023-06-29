@@ -1,20 +1,17 @@
-# Using node:16-alpine base image
-FROM node:16-alpine 
+# Author: Jorge Garcia - George the Penguin <mr-george@georgethepenguin.dev>
+# Creation date: 05-02-2023
+# Description: Dockerfile for the NodeJS backend application
 
-# Set /app as the default work directory
+FROM node:18-alpine
+
 WORKDIR /app
 
-# copy package.json to the working directory for packages installation
-COPY package.json /app
+COPY package*.json ./
 
-# Install npm dependencies
-RUN yarn install
+RUN npm install
 
-# Copy all the project files to the working directory
 COPY . .
 
-# Expose the port of your application to bind with the host port
 EXPOSE 3000
 
-# run your app
-CMD ['yarn', 'run', 'start']
+CMD ["npm", "start"]

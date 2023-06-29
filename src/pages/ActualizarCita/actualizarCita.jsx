@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { crearCita, actualizarCita, recuperarCita, eliminarCita } from '../../redux/actions/actions';
 import CrearCita from '../CrearCita/crearCita';
-import axios from 'axios';
+import axios from '../../api/axiosConfig';
 import './actualizarCita.css';
 
 export default function Actualizar() {
@@ -76,7 +76,7 @@ export default function Actualizar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('https://citasync.onrender.com/citas', cita)
+    axios.post('/citas', cita)
       .then((response) => {
         console.log(response.data);
         navigate('/detalle');
