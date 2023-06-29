@@ -9,6 +9,8 @@ const BuscarCitas = () => {
   const [filtro, setFiltro] = useState('');
   const [selectedCita, setSelectedCita] = useState(null);
   const citas = useSelector((state) => state.citas.citas) ?? [];
+  console.log('citas');
+  console.log(citas);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
