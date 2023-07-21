@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { actualizarCita, eliminarCita } from '../../redux/actions/actions';
+import axios from 'axios';
+import { getCita, actualizarCita, eliminarCita } from '../../redux/actions/actions';
 import './detalle.css';
 
-const Detalle = ({ cita: citaData }) => {
+const Detalle = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cita = useSelector(state => state.cita);
+
+  useEffect(() => {
+    const fetchCitaDetails = async (id) => {
+      try {
+        const response = await axios.get(`https://citasync.onrender.com/citas/${id}`);
+        const data = response.data;
+        dispatch(actualizarCita(data)); 
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    if (cita?.id) {
+      fetchCitaDetails(cita.id);
+    }
+  }, [dispatch, cita]);
 
   const handleDeleteClick = () => {
     if (cita && cita.id) {
@@ -18,17 +35,16 @@ const Detalle = ({ cita: citaData }) => {
 
   const handleToggle = () => {
     if (cita && cita.id) {
-      dispatch(
-        actualizarCita(cita.id, {
-          ...cita,
-          estado: !cita.estado,
-        })
-      );
+      const updatedCita = {
+        ...cita,
+        estado: !cita.estado,
+      };
+      dispatch(actualizarCita(updatedCita));
     }
   };
 
-  const handleBuscarClick = () => {
-    navigate('/buscarCitas');
+  const handleObtenerClick = () => {
+    navigate('/crearCita');
   };
 
   const handleMenuClick = () => {
@@ -50,7 +66,7 @@ const Detalle = ({ cita: citaData }) => {
     estado: false,
   };
 
-  const displayCita = cita || defaultCita;
+  const displayCita = cita ?? defaultCita;
 
   return (
     <div>
@@ -94,8 +110,8 @@ const Detalle = ({ cita: citaData }) => {
         </div>
       )}
       <div>
-        <button className="button-add" onClick={handleBuscarClick}>
-          Buscar Citas
+        <button className="button-add" onClick={handleObtenerClick}>
+          Obtener Cita
         </button>
       </div>
       <div>
