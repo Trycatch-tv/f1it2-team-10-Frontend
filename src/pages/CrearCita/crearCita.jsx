@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { crearCita } from '../../redux/actions/actions';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './crearCita.css';
 
 const CrearCita = () => {
@@ -17,6 +18,19 @@ const CrearCita = () => {
     detalles: '',
     estado: '',
   });
+
+  useEffect(() => {
+    const fetchCitaDetails = async (id) => {
+      try {
+        const response = await axios.get('http://localhost:3001/citas');
+        const data = response.data;
+        setFormValues(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCitaDetails(1);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,7 +68,7 @@ const CrearCita = () => {
     }
   };
 
-  const handleAddClick = () => {
+  const handleSaveClick = () => {
     navigate('/detalle');
   };
 
@@ -71,7 +85,7 @@ const CrearCita = () => {
           <h1>CitaSync</h1>
         </div>
         <div className="encabezado">
-          <h2>Añadir cita</h2>
+          <h2>Crear cita</h2>
         </div>
         <div className="input-container">
           <label htmlFor="id">Id:</label>
@@ -150,7 +164,7 @@ const CrearCita = () => {
           />
         </div>
         <div className="input-container">
-          <label htmlFor="nombre">Estado:</label>
+          <label htmlFor="estado">Estado:</label>
           <input
             type="text"
             id="estado"
@@ -161,7 +175,7 @@ const CrearCita = () => {
           />
         </div>
         <div className="button-container">
-          <button type="submit" className="button-clicked">
+          <button type="submit" className="button-clicked" onClick={handleSaveClick}>
             Guardar Cita
           </button>
         </div>
