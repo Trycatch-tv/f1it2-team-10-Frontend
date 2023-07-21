@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const crearCita = createAsyncThunk(
-  'citas/crearCita',
+  '/citas/crearCita',
   async (cita) => {
     const response = await axios.post('/citas', cita);
     return response.data;
@@ -11,11 +11,8 @@ export const crearCita = createAsyncThunk(
 
 export const actualizarCita = createAsyncThunk(
   'citas/actualizarCita',
-  async ({ id, actualizarCita }) => {
-    const response = await axios.put(
-      `/citas/${id}`,
-      actualizarCita
-    );
+  async ({ id, cita }) => {
+    const response = await axios.put(`/citas/${id}`, cita);
     return response.data;
   }
 );
@@ -28,18 +25,17 @@ export const eliminarCita = createAsyncThunk(
   }
 );
 
-export const buscarCitas = createAsyncThunk(
-  'citas/buscarCita',
-  async (terminoBusqueda) => {
-    const response = await axios.get(
-      `/citas?q=${terminoBusqueda}`
-    );
+
+export const getCita = createAsyncThunk(
+  'citas/obtenerCita',
+  async (id) => {
+    const response = await axios.get(`/citas/${id}`);
     return response.data;
   }
 );
 
-export const recuperarCita = createAsyncThunk(
-  'citas/recuperarCita',
+export const getCitas = createAsyncThunk(
+  'citas/obtenerCitas',
   async () => {
     const response = await axios.get('/citas');
     return response.data;
@@ -50,36 +46,32 @@ const citasSlice = createSlice({
   name: 'citas',
   initialState: {
     citas: [],
-    buscarCitas: [],
+    getCitas: [],
   },
-  reducers: {},
-  extraReducers: (builder) => {
-    builder
-      .addCase(crearCita.fulfilled, (state, action) => {
-        state.citas.push(action.payload);
-      })
-      .addCase(actualizarCita.fulfilled, (state, action) => {
-        const index = state.citas.findIndex(
-          (cita) => cita.id === action.payload.id
-        );
-        if (index !== -1) {
-          state.citas[index] = action.payload;
-        }
-      })
-      .addCase(eliminarCita.fulfilled, (state, action) => {
-        const index = state.citas.findIndex((cita) => cita.id === action.payload);
-        if (index !== -1) {
-          state.citas.splice(index, 1);
-        }
-      })
-      .addCase(buscarCitas.fulfilled, (state, action) => {
-        state.buscarCitas = action.payload;
-      })
-      .addCase(recuperarCita.fulfilled, (state, action) => {
-        state.citas = action.payload;
-      });
+  reducers: {
+    crearCita(state, action) {
+      state.citas.push(action.payload);
+    },
+    actualizarCita(state, action) {
+      const index = state.citas.findIndex((cita) => cita.id === action.payload.id);
+      if (index !== -1) {
+        state.citas[index] = action.payload;
+      }
+    },
+    eliminarCita(state, action) {
+      const index = state.citas.findIndex((cita) => cita.id === action.payload);
+      if (index !== -1) {
+        state.citas.splice(index, 1);
+      }
+    },
+    getCitas(state, action) {
+      state.getCitas = action.payload;
+    },
+    getCita(state, action) {
+      state.cita = action.payload;
+    }
   },
 });
 
 export const { actions } = citasSlice;
-export default citasSlice.reducer;
+export default citasSlice.reducer
