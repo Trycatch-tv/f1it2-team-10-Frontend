@@ -1,16 +1,13 @@
-const express = require('express');
-const server = express();
-const router = require('./routes/index');
+const axios = require('axios');
+const router = express.Router();
 
-server.use(express.json());
-
-server.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-  next();
+const api = axios.create({
+  baseURL: 'https://citasync.onrender.com',
 });
 
-server.use('/', router);
+export const getCita = (id) => api.get(`/citas/${id}`);
+export const getCitas = () => api.get(`/citas`);
+export const crearCita = (cita) => api.post('/citas', cita);
+export const actualizarCita = (id, data) => api.put(`/citas/${id}`, data);
+export const deleteCita = (id) => api.delete(`/citas/${id}`);
 
-module.exports = server;
